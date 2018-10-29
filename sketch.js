@@ -1,13 +1,17 @@
-// declare bgm variable
 var bgm;
+
+// declare sfx1 variable
 var sfx1;
+
 var buttonStart;
 
 function preload()
 {
-	// load sound file into variable bgm
 	bgm = loadSound("https://bleungwpg.github.io/p5jsTutorial4.2/sounds/bensound-creativeminds.mp3");
+
+	// load sound file into variable sfx1
 	sfx1 = loadSound("https://bleungwpg.github.io/p5jsTutorial4.2/sounds/zapsplat_multimedia_game_sound_positive_action_tone_032_25091.mp3");
+
 	buttonStart = loadImage("https://bleungwpg.github.io/p5jsTutorial4.2/images/button_press-for-sfx.png");
 
 }
@@ -16,7 +20,6 @@ function setup()
 {
 	createCanvas(800,600);
 
-	// play music during setup so that it doesn't loop infinitely
 	bgm.play();
 }
 
@@ -32,10 +35,13 @@ function draw()
 
 	image(buttonStart,200,100);
 
+	// Check if we have clicked on the button
 	if (mouseX > 200 && mouseX < 200 + 168 && mouseY > 100 && mouseY < 100 + 40 && mouseIsPressed)
 	{
+		// check that the sound effect is NOT (!) already playing; it is usually not desired to have the sound effect overlap
 		if (!sfx1.isPlaying())
 		{
+			// play the sound effect
 			sfx1.play();
 		}
 	}
